@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HortaViva - Cadastrar Planta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu de Navegação -->
+    <nav class="menu-navegacao">
+        <div class="logo">
+            <span class="icone-logo">🌱</span>
+            <h1>HortaViva</h1>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="cadastro.html" class="ativo">Cadastrar Planta</a></li>
+            <li><a href="painel.html">Painel Admin</a></li>
+            <li><a href="assistente.html">🤖 Abilinho</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="conteudo-principal">
+        <section class="secao-cadastro">
+            <h2>🌿 Cadastrar Nova Planta</h2>
+            <form id="formulario-planta" class="formulario">
+                <div class="grupo-campo">
+                    <label for="nome-planta">Nome da Planta:</label>
+                    <select id="nome-planta" required>
+                        <option value="">Selecione a planta...</option>
+                        <optgroup label="🥬 Saladas e Folhosas">
+                            <option value="alface">Alface</option>
+                            <option value="rucula">Rúcula</option>
+                            <option value="couve">Couve</option>
+                            <option value="espinafre">Espinafre</option>
+                            <option value="agriao">Agrião</option>
+                            <option value="chicoria">Chicória</option>
+                            <option value="salsinha">Salsinha</option>
+                            <option value="cebolinha">Cebolinha</option>
+                            <option value="manjericao">Manjericão</option>
+                            <option value="hortelã">Hortelã</option>
+                        </optgroup>
+                        <optgroup label="🍅 Frutos e Legumes">
+                            <option value="tomate">Tomate</option>
+                            <option value="pimentao">Pimentão</option>
+                            <option value="pepino">Pepino</option>
+                            <option value="abobrinha">Abobrinha</option>
+                            <option value="berinjela">Berinjela</option>
+                            <option value="quiabo">Quiabo</option>
+                            <option value="morango">Morango</option>
+                            <option value="pimenta">Pimenta</option>
+                        </optgroup>
+                        <optgroup label="🥕 Raízes e Tubérculos">
+                            <option value="cenoura">Cenoura</option>
+                            <option value="beterraba">Beterraba</option>
+                            <option value="rabanete">Rabanete</option>
+                            <option value="mandioca">Mandioca</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="data-plantio">Data do Plantio:</label>
+                    <input type="date" id="data-plantio" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="localizacao">Localização na Horta:</label>
+                    <select id="localizacao" required>
+                        <option value="">Selecione o local...</option>
+                        <optgroup label="🌿 Canteiro A">
+                            <option value="A1">Canteiro A - Posição 1</option>
+                            <option value="A2">Canteiro A - Posição 2</option>
+                            <option value="A3">Canteiro A - Posição 3</option>
+                            <option value="A4">Canteiro A - Posição 4</option>
+                            <option value="A5">Canteiro A - Posição 5</option>
+                            <option value="A6">Canteiro A - Posição 6</option>
+                        </optgroup>
+                        <optgroup label="🌿 Canteiro B">
+                            <option value="B1">Canteiro B - Posição 1</option>
+                            <option value="B2">Canteiro B - Posição 2</option>
+                            <option value="B3">Canteiro B - Posição 3</option>
+                            <option value="B4">Canteiro B - Posição 4</option>
+                            <option value="B5">Canteiro B - Posição 5</option>
+                            <option value="B6">Canteiro B - Posição 6</option>
+                        </optgroup>
+                        <optgroup label="🌿 Canteiro C">
+                            <option value="C1">Canteiro C - Posição 1</option>
+                            <option value="C2">Canteiro C - Posição 2</option>
+                            <option value="C3">Canteiro C - Posição 3</option>
+                            <option value="C4">Canteiro C - Posição 4</option>
+                            <option value="C5">Canteiro C - Posição 5</option>
+                            <option value="C6">Canteiro C - Posição 6</option>
+                        </optgroup>
+                        <optgroup label="🪴 Prateleira">
+                            <option value="P1">Prateleira - Posição 1</option>
+                            <option value="P2">Prateleira - Posição 2</option>
+                            <option value="P3">Prateleira - Posição 3</option>
+                            <option value="P4">Prateleira - Posição 4</option>
+                            <option value="P5">Prateleira - Posição 5</option>
+                            <option value="P6">Prateleira - Posição 6</option>
+                        </optgroup>
+                    </select>
+                    <small class="campo-dica" id="dica-localizacao"></small>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" min="1" max="50" value="1" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" placeholder="Anotações sobre a planta..." rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="botao-cadastrar">🌱 Cadastrar Planta</button>
+            </form>
+
+            <div id="mensagem-sucesso" class="mensagem-sucesso escondido">
+                ✅ Planta cadastrada com sucesso!
+            </div>
+        </section>
+
+        <!-- Lista de Plantas Cadastradas -->
+        <section class="secao-lista-plantas">
+            <h2>📋 Plantas Cadastradas</h2>
+            <div id="lista-plantas" class="lista-plantas">
+                <p class="sem-plantas">Nenhuma planta cadastrada ainda.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <p>🌱 HortaViva - Agricultura Familiar Sustentável | Equilíbrio entre Produção e Meio Ambiente</p>
+        <p>Protótipo desenvolvido para fins educacionais - 2026</p>
+    </footer>
+
+    <script src="banco.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HortaViva - Painel Administrativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu de Navegação -->
+    <nav class="menu-navegacao">
+        <div class="logo">
+            <span class="icone-logo">🌱</span>
+            <h1>HortaViva</h1>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="cadastro.html">Cadastrar Planta</a></li>
+            <li><a href="painel.html" class="ativo">Painel Admin</a></li>
+            <li><a href="assistente.html">🤖 Abilinho</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="conteudo-principal">
+        <!-- Painel de Controle -->
+        <section class="secao-painel">
+            <h2>⚙️ Painel Administrativo</h2>
+
+            <!-- Filtros -->
+            <div class="filtros-painel">
+                <button class="botao-filtro ativo" onclick="filtrarAlertas('todos')">Todos</button>
+                <button class="botao-filtro" onclick="filtrarAlertas('colheita')">🌾 Colheita</button>
+                <button class="botao-filtro" onclick="filtrarAlertas('irrigacao')">💧 Irrigação</button>
+                <button class="botao-filtro" onclick="filtrarAlertas('adubo')">🧪 Adubação</button>
+                <button class="botao-filtro" onclick="filtrarAlertas('atencao')">⚠️ Atenção</button>
+            </div>
+        </section>
+
+        <!-- Alertas Detalhados -->
+        <section class="secao-alertas-detalhados">
+            <h2>📋 Alertas Detalhados por Planta</h2>
+            <div id="alertas-detalhados" class="alertas-detalhados">
+                <p class="sem-alertas">Nenhuma planta cadastrada. Vá para a página de cadastro para adicionar plantas.</p>
+            </div>
+        </section>
+
+        <!-- Cronograma de Colheita -->
+        <section class="secao-cronograma">
+            <h2>📅 Cronograma de Colheita</h2>
+            <div id="cronograma" class="cronograma">
+                <p class="sem-alertas">Nenhuma planta cadastrada ainda.</p>
+            </div>
+        </section>
+
+        <!-- Sugestões de Cuidados -->
+        <section class="secao-sugestoes">
+            <h2>💡 Sugestões de Cuidados</h2>
+            <div id="sugestoes-cuidados" class="sugestoes-cuidados">
+                <div class="card-sugestao">
+                    <h3>🌡️ Clima Quente</h3>
+                    <p>Em dias com temperatura acima de 30°C, aumente a frequência de irrigação e proteja as folhosas com sombrite.</p>
+                </div>
+                <div class="card-sugestao">
+                    <h3>🌧️ Período Chuvoso</h3>
+                    <p>Em épocas de muita chuva, cuide da drenagem dos canteiros para evitar encharcamento das raízes.</p>
+                </div>
+                <div class="card-sugestao">
+                    <h3>🐛 Pragas Comuns</h3>
+                    <p>Use calda de neem ou armadilhas naturais. Evite agrotóxicos para manter o equilíbrio ambiental.</p>
+                </div>
+                <div class="card-sugestao">
+                    <h3>🧪 Adubação Orgânica</h3>
+                    <p>Prefira compostagem caseira e húmus de minhoca. Adube a cada 15 dias para melhores resultados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ações Rápidas -->
+        <section class="secao-acoes">
+            <h2>🚀 Ações Rápidas</h2>
+            <div class="acoes-rapidas">
+                <button class="botao-acao" onclick="marcarIrrigacao()">💧 Registrar Irrigação</button>
+                <button class="botao-acao" onclick="marcarAdubacao()">🧪 Registrar Adubação</button>
+                <button class="botao-acao" onclick="exportarRegistros()">📥 Salvar em Arquivo</button>
+                <label class="botao-acao botao-importar">
+                    📤 Carregar Arquivo
+                    <input type="file" id="input-importar" accept=".json" onchange="importarRegistros(event)" hidden>
+                </label>
+                <button class="botao-acao" onclick="limparDados()">🗑️ Limpar Todos os Dados</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <p>🌱 HortaViva - Agricultura Familiar Sustentável | Equilíbrio entre Produção e Meio Ambiente</p>
+        <p>Protótipo desenvolvido para fins educacionais - 2026</p>
+    </footer>
+
+    <script src="banco.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

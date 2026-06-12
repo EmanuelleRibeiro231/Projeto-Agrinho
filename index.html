@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HortaViva - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Menu de Navegação -->
+    <nav class="menu-navegacao">
+        <div class="logo">
+            <span class="icone-logo">🌱</span>
+            <h1>HortaViva Abílio</h1>
+        </div>
+        <ul class="menu-links">
+            <li><a href="index.html" class="ativo">Dashboard</a></li>
+            <li><a href="cadastro.html">Cadastrar Planta</a></li>
+            <li><a href="painel.html">Painel Admin</a></li>
+            <li><a href="assistente.html">🤖 Abilinho</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="conteudo-principal">
+        <!-- Seção de Informações do Clima -->
+        <section class="secao-clima">
+            <h2>🌤️ Previsão do Tempo - <span id="nome-cidade">Carregando...</span></h2>
+            <div class="cards-clima">
+                <div class="card-clima">
+                    <span class="clima-icone">🌡️</span>
+                    <p class="clima-valor" id="temperatura">--°C</p>
+                    <p class="clima-label">Temperatura</p>
+                </div>
+                <div class="card-clima">
+                    <span class="clima-icone">💧</span>
+                    <p class="clima-valor" id="umidade">--%</p>
+                    <p class="clima-label">Umidade</p>
+                </div>
+                <div class="card-clima">
+                    <span class="clima-icone">🌧️</span>
+                    <p class="clima-valor" id="chuva">--</p>
+                    <p class="clima-label">Chuva</p>
+                </div>
+                <div class="card-clima">
+                    <span class="clima-icone">💨</span>
+                    <p class="clima-valor" id="vento">-- km/h</p>
+                    <p class="clima-label">Vento</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Alertas -->
+        <section class="secao-alertas">
+            <h2>🔔 Alertas Ativos</h2>
+            <div id="lista-alertas" class="lista-alertas">
+                <p class="sem-alertas">Nenhuma planta cadastrada ainda. Cadastre suas plantas para receber alertas!</p>
+            </div>
+        </section>
+
+        <!-- Seção Inteligência da Horta -->
+        <section class="secao-inteligente">
+            <h2>🧠 Inteligência da Horta</h2>
+            <p class="subtitulo-secao">Diagnóstico automático com análise de saúde, agenda inteligente e compatibilidade entre plantas</p>
+            <div id="painel-inteligente" class="painel-inteligente">
+                <p class="sem-alertas">Carregando diagnóstico...</p>
+            </div>
+        </section>
+
+        <!-- Seção do Mapa da Horta -->
+        <section class="secao-mapa">
+            <h2>🗺️ Mapa da Horta</h2>
+            <p class="subtitulo-secao">Visão aérea dos canteiros — clique em uma planta para ver detalhes</p>
+            <div class="mapa-horta" id="mapa-horta">
+                <div class="mapa-grid-novo">
+                    <!-- Canteiro A -->
+                    <div class="canteiro-novo" id="canteiro-A">
+                        <div class="canteiro-titulo"><span>🌿</span> Canteiro A</div>
+                        <div class="canteiro-grid" id="espacos-A"></div>
+                    </div>
+                    <!-- Canteiro B -->
+                    <div class="canteiro-novo" id="canteiro-B">
+                        <div class="canteiro-titulo"><span>🌿</span> Canteiro B</div>
+                        <div class="canteiro-grid" id="espacos-B"></div>
+                    </div>
+                    <!-- Canteiro C -->
+                    <div class="canteiro-novo" id="canteiro-C">
+                        <div class="canteiro-titulo"><span>🌿</span> Canteiro C</div>
+                        <div class="canteiro-grid" id="espacos-C"></div>
+                    </div>
+                    <!-- Prateleira -->
+                    <div class="canteiro-novo canteiro-prateleira" id="canteiro-P">
+                        <div class="canteiro-titulo"><span>🪴</span> Prateleira</div>
+                        <div class="canteiro-grid" id="espacos-P"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mapa-legenda">
+                <span class="legenda-item"><span class="legenda-cor legenda-vazio"></span> Disponível</span>
+                <span class="legenda-item"><span class="legenda-cor legenda-crescendo"></span> Crescendo</span>
+                <span class="legenda-item"><span class="legenda-cor legenda-atencao"></span> Atenção</span>
+                <span class="legenda-item"><span class="legenda-cor legenda-colheita"></span> Colheita</span>
+            </div>
+        </section>
+
+        <!-- Seção Resumo das Plantas -->
+        <section class="secao-resumo">
+            <h2>📊 Resumo das Plantas</h2>
+            <div class="cards-resumo">
+                <div class="card-resumo clicavel" onclick="mostrarPlantasPorCategoria('todas')">
+                    <span class="resumo-numero" id="total-plantas">0</span>
+                    <p>Total de Plantas</p>
+                </div>
+                <div class="card-resumo alerta-colheita clicavel" onclick="mostrarPlantasPorCategoria('colheita')">
+                    <span class="resumo-numero" id="prontas-colheita">0</span>
+                    <p>Prontas p/ Colheita</p>
+                </div>
+                <div class="card-resumo alerta-cuidado clicavel" onclick="mostrarPlantasPorCategoria('cuidado')">
+                    <span class="resumo-numero" id="precisam-cuidado">0</span>
+                    <p>Precisam de Cuidado</p>
+                </div>
+                <div class="card-resumo alerta-ok clicavel" onclick="mostrarPlantasPorCategoria('saudavel')">
+                    <span class="resumo-numero" id="plantas-saudaveis">0</span>
+                    <p>Saudáveis</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Guia de Compatibilidade -->
+        <section class="secao-compatibilidade">
+            <h2>🌿 Guia de Compatibilidade de Plantas</h2>
+            <p class="subtitulo-secao">Descubra quais plantas se beneficiam mutuamente e quais devem ficar separadas no canteiro</p>
+            
+            <div class="compatibilidade-intro">
+                <div class="intro-card">
+                    <span class="intro-icone">🤝</span>
+                    <h4>O que é?</h4>
+                    <p>Compatibilidade de plantas (ou consórcio) é a prática de cultivar espécies próximas que se ajudam — repelindo pragas, atraindo polinizadores ou melhorando o solo.</p>
+                </div>
+                <div class="intro-card">
+                    <span class="intro-icone">✅</span>
+                    <h4>Benefícios</h4>
+                    <p>Menos pragas, melhor uso do espaço, solo mais fértil, maior produtividade e redução do uso de agrotóxicos.</p>
+                </div>
+                <div class="intro-card">
+                    <span class="intro-icone">⚠️</span>
+                    <h4>Cuidados</h4>
+                    <p>Algumas plantas competem por nutrientes ou liberam substâncias que inibem o crescimento de vizinhas. Evite combiná-las!</p>
+                </div>
+            </div>
+
+            <div class="compatibilidade-filtro">
+                <label for="filtro-planta">Selecione uma planta:</label>
+                <select id="filtro-planta" onchange="mostrarCompatibilidade()">
+                    <option value="">-- Todas as plantas --</option>
+                </select>
+            </div>
+
+            <div class="compatibilidade-tabela" id="tabela-compatibilidade">
+                <!-- Preenchido pelo JavaScript -->
+            </div>
+
+            <div class="compatibilidade-dicas">
+                <h3>💡 Dicas Gerais de Consórcio</h3>
+                <ul>
+                    <li><strong>Diversifique alturas:</strong> plantas altas dão sombra para as que preferem meia-sombra</li>
+                    <li><strong>Alterne raízes rasas e profundas:</strong> evita competição por nutrientes na mesma camada do solo</li>
+                    <li><strong>Use flores no canteiro:</strong> calêndula e cravo-de-defunto atraem polinizadores e repelem nematoides</li>
+                    <li><strong>Rotação de culturas:</strong> não repita a mesma família no mesmo canteiro a cada ciclo</li>
+                    <li><strong>Aromáticas como proteção:</strong> manjericão, alecrim e hortelã afastam diversas pragas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Modal de Plantas por Categoria -->
+        <div class="modal-overlay escondido" id="modal-plantas" onclick="fecharModal(event)">
+            <div class="modal-conteudo">
+                <div class="modal-cabecalho">
+                    <h3 id="modal-titulo">Plantas</h3>
+                    <button class="botao-fechar-modal" onclick="fecharModalPlantas()">✕</button>
+                </div>
+                <div class="modal-corpo" id="modal-lista-plantas"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <p>🌱 HortaViva - Agricultura Familiar Sustentável | Equilíbrio entre Produção e Meio Ambiente</p>
+        <p>Protótipo desenvolvido para fins educacionais - 2026</p>
+    </footer>
+
+    <script src="banco.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
